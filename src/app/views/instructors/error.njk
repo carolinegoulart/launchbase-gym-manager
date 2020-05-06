@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class='card table-container empty'>
+    <div class="header">
+        <a class='button' href='/instructors/create'>Novo Instrutor</a>
+        <form action='/instructors' method='GET'>
+            <input type='text' name='filter' value='{{filter}}' placeholder='Nome ou atendimento'>
+            <button type='submit'>Filtrar</button>
+        </form>
+    </div>
+    <table width='100%'>
+        <thead>
+            <tr>
+                <th>Instrutor</th>
+                <th>Atendimento</th>
+                <th>Alunos</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+    </table>
+    <span>Nenhum resultado encontrado.</span>
+</div>
+
+{% endblock content %}
+
+

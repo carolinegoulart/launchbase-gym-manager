@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<form class='card' method='POST' action='/members'>
+    <section class='avatar' style='background: url("https://images.unsplash.com/photo-1581785933842-5480ee7c7814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60") no-repeat center center / cover;'>
+    </section>
+
+    <section class="details">
+        <h3>Novo Membro</h3>
+        <a href='/members' class='button-back'>Voltar</a>
+        <div class="item">
+            <label for='avatar_url' class='label'>Avatar URL</label>
+            <input type='url' id='avatar_url' name='avatar_url' required placeholder='http://' value='https://www.yourfirstpatient.com/assets/default-user-avatar-thumbnail@2x-ad6390912469759cda3106088905fa5bfbadc41532fbaa28237209b1aa976fc9.png'>
+        </div>
+        {% include 'members/fields.njk' %}
+    </section>
+</form>
+
+{% endblock content %}

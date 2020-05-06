@@ -1,0 +1,370 @@
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+:root {
+    --primary-color: rgb(10, 25, 47);
+    --secondary-color: #f7df1e;
+    --third-color: rgb(27, 61, 112);
+    --fourth-color: #CCD6F6;
+}
+
+body {
+    /* background-color: var(--primary-color); */
+    font-family: 'Noto Sans', sans-serif;
+    background-image: url(imagem.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* CABEÇALHO */ 
+header {
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    /* usado para que o padding seja aplicado nos 4 lados tendo width 100%, o padrao seria em 3 somente */
+    box-shadow: rgba(2, 12, 27, 0.7) 0px 10px 30px -10px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--fourth-color);
+    position: relative;
+}
+
+.links li {
+    display: inline;
+    font-size: 22px;
+    font-size: 20px;
+}
+
+.links li + li {
+    /* aplica somente nos elementos li que tenham um li antes dele.. se tiver 3, aplica no 1° e no 2° elemento */
+    margin-left: 32px;
+}
+
+.links .active {
+    font-weight: bold;
+    color: var(--fourth-color);
+}
+
+.links a:hover {
+    color: var(--fourth-color);
+}
+
+.links a::after {
+    /* configuração da barra abaixo do item de menu */
+    content: '';
+    width: 0%;
+    height: 1px;
+    background-color: var(--fourth-color);
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.links a:hover::after {
+    width: 100%; /* 100% do elemento anterior */
+    transition: width 200ms ease-in-out;
+}
+
+/* CARD */
+.card {
+    background-color: #FFFFFF;
+    width: 800px;
+    min-height: 400px;
+    margin: 45px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4); /* deslocamento no eixo x e y, blurr, spread */
+    overflow: hidden; /* o que passa da div fica escondido */
+    animation-name: up; /* animação */
+    animation-duration: 700ms;
+    animation-timing-function: ease-out;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.details {
+    padding: 32px;
+    position: relative;
+}
+
+.details .item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+
+.details .item:last-child {
+    /* aplica somente no ultimo filho */
+    border: none;
+}
+
+.details h3,
+.details .label, 
+.details .item div:nth-child(1){
+    /* aplica na primeira  */
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(163, 162, 162);
+    letter-spacing: 0.7px;
+}
+
+.details .item div:nth-child(2){
+    /* aplica no segundo filho  */
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.details h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.details .item span, .details .item .label-gender {
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    color: #777;
+    margin-right: 4px;
+    margin-top: 8px;
+    display: inline-block; /* para que ele aceite o margin-top, precisa colocar display block, mas ai a tag vai ocupar toda
+    a linha. para evitar isso, usamos inline-block. o padrão da div é display: block */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+/* FORM */
+form input, select {
+    width: 100%;
+    border: 0;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+input[type="radio"] { /* pega a bolinha */
+    width: initial;
+    margin-right: 4px;
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+button[type='submit'], .button, a.button-back {
+    padding: 8px 32px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    margin-top: 32px;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+a.button-back {
+    position: absolute;
+    padding: 8px 32px;
+    margin: 32px 32px 0 32px;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    width: auto;
+    text-decoration: none;
+}
+
+button[type='submit']:hover, a.button:hover, a.button-back:hover,
+.card.table-container a:hover{
+    background-color: var(--third-color);
+    cursor: pointer;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box; /* respeita o limite do box */
+    text-align: center;
+    text-decoration: none;
+}
+
+#form-delete button {
+    margin-top: 8px;
+    background-color: rgb(190, 49, 49);
+}
+
+#form-delete button:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+/* INDEX */
+.table-container {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* removendo as configurações padrao do navegador */
+.table-container table {
+    border-spacing: 0;
+    margin: 16px 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+    font-weight: bold;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+    text-transform: uppercase;
+    color: #777;
+    font-size: 14px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr; /* 2 colunas: uma fracao com 64px e o resto se ajusta */
+    align-items: center;
+    font-weight: bold;
+}
+
+tbody tr td:first-child span {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px;
+    border: 1px solid white;
+}
+
+tbody tr td:last-child a,
+.table-container > a {
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.table-container > a {
+    margin: 0 0 8px 16px;
+}
+
+/* 1: seleciona o ultimo do cabecalho (Acao) */
+/* 2: seleciona o ultimo de cada linha */
+/* 2: seleciona o penultimo de cada linha */
+.table-container thead tr th:last-child,
+.table-container tbody tr td:last-child,
+.table-container tbody tr td:nth-last-child(2) {
+    text-align: center;
+}
+
+/* FILTERS */
+.table-container .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 16px;
+    margin-top: 0;
+}
+
+.table-container .header a {
+    margin: 0;
+    width: 160px;
+    padding: 8px 0;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.table-container .header form input {
+    border: 1px solid #EEE;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.table-container .header form button {
+    margin: 0;
+}
+
+/* PAGINATION */
+.table-container {
+    display: grid;
+    grid-template: 54px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a, .pagination span {
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-right: 16px;
+}
+
+.card.table-container .pagination a:hover,
+.card.table-container .pagination span:hover {
+    background-color: white;
+    font-weight: bold;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/* INDEX EMPTY */
+.card.table-container.empty {
+    grid-template: 54px 120px 16px / 1fr;
+}
+
+.card.table-container.empty span{
+    justify-self: center;
+}

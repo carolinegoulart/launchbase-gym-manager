@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class='card'>
+        <section class='avatar' style='background: url({{instructor.avatar_url}}) no-repeat center center / cover;'>
+        </section>
+        <section class="details">
+            <form method='POST' action='/instructors?_method=PUT'>
+                {# deve instalar a dependencia method-override para a action funcionar #}
+                <h3>Editar Instrutor</h3>
+                <a href='/instructors' class='button-back'>Voltar</a>
+                <div class="item">
+                    <label for='avatar_url' class='label'>Avatar URL</label>
+                    <input type='url' id='avatar_url' name='avatar_url' required placeholder='http://' value='{{ instructor.avatar_url }}'>
+                </div>
+                {% include 'instructors/fields.njk' %}
+                <input type='hidden' name='id' value='{{instructor.id}}'>
+                {# quando o usuario preencher o form, ele ja envia como campo preenchido o id #}
+            </form>
+            <form id='form-delete' method='POST' action='/instructors?_method=DELETE' >
+                <input type='hidden' name='id' value='{{instructor.id}}'>
+                <button type='submit'>Deletar</button>
+            </form>
+        </section>
+    {# criamos um novo form pois a action do form anterior e put #}
+</div>
+
+{% endblock content %}
+

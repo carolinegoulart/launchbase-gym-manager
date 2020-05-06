@@ -1,0 +1,33 @@
+        <div class="item">
+            <label for='avatar_url' class='label'>Avatar URL</label>
+            <input type='url' id='avatar_url' name='avatar_url' required placeholder='http://' value='{{ instructor.avatar_url }}'>
+        </div>
+
+        <div class="item">
+            <label for='name' class='label'>Instrutor</label>
+            <input type='text' id='name' name='name' required placeholder='Nome do instrutor' value='{{ instructor.name }}'>
+        </div>
+
+        <div class="item">
+            <label for='birth' class='label'>Data de Nascimento</label>
+            <input type='date' id='birth' name='birth' required value='{{ instructor.birth }}'>
+        </div>
+
+        <div class="item">
+            <div class='label'>Sexo</div>
+            <fieldset>
+                <label for='gender-m' class='label-gender'>
+                    <input type="radio" id="gender-m" name="gender" value="M" 
+                    {% if instructor.gender == "M" %}checked{% endif %}>Masculino</label>
+                <label for='gender-f' class='label-gender'>
+                <input type="radio" id="gender-f" name="gender" value="F"
+                {% if instructor.gender == "F" %}checked{% endif %}>Feminino</label>
+            </fieldset>
+        </div>
+
+        <div class="item">
+            <label for='services' class='label'>Área de Atuação</label>
+            <input type='text' id='services' name='services' required value='{{instructor.services}}'>
+        </div>
+
+        <button type="submit">Salvar</button>
