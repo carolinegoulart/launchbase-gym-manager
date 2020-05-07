@@ -7,10 +7,13 @@ const { Client } = require('pg');
 
 const client = new Client({  
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    ssl: true
 });
 
-client.connect();
+client.connect(function(){
+    console.log(client)
+});
+
 module.exports = client;
 
 const server = express();
