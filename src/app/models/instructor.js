@@ -1,5 +1,5 @@
 const { age, date } = require('../../lib/utils')
-const client = require('../../server.js');
+const client = require('../../server');
 
 // const db = require('../../config/db')
 

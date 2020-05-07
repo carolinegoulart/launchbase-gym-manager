@@ -10,7 +10,8 @@ const client = new Client({
     ssl: { rejectUnauthorized: false }
 });
 
-module.exports = client.connect();
+client.connect();
+module.exports = client;
 
 const server = express();
 
