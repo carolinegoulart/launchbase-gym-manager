@@ -6,13 +6,11 @@ const methodOverride = require('method-override');
 const { Client } = require('pg');
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
+    connectionString: connectionString,
+    ssl: { rejectUnauthorized: false }
 });
 
 client.connect(function(err, client, done){
-    console.log('ATTENTION err=', err);
-    console.log('ATTENTION client=', client);
     client.query(text, values).then(ret_cb).catch(err_cb);
 });
 
