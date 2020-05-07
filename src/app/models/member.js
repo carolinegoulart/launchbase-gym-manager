@@ -1,6 +1,5 @@
 const { age, date } = require('../../lib/utils')
-const { client } = require('../../server')
-const server = require('./server');
+const server = require('../../server');
 
 // const db = require('../../config/db')
 // substituted all db.query for client.query
