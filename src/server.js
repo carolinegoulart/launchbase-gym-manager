@@ -27,6 +27,9 @@ nunjucks.configure('src/app/views', {
 })
 
 // colocando o servidor online:
-server.listen(5000, function(){
-    console.log('Server is running.')
-})
+// server.listen(5000, function(){
+//     console.log('Server is running.')
+// })
+
+// Heroku:
+server.listen(process.env.PORT || 3000)
