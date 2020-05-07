@@ -1,12 +1,27 @@
-const { Pool } = require('pg')
-// se nao usar tipo pool, toda vez que conectar, precisa enviar login e senha
-// com essa config, conecta uma vez no banco e ele guarda a informacao
+const { Client } = require('pg');
 
-module.exports = new Pool({
-    user: 'postgres',
-    password: '8621',
-    host: 'localhost',
-    port: 5432,
-    database: 'gymmanager'
-})
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+// Running locally:
+// const { Pool } = require('pg')
+
+// module.exports = new Pool({
+//     user: 'postgres',
+//     password: '8621',
+//     host: 'localhost',
+//     port: 5432,
+//     database: 'gymmanager'
+// })
