@@ -99,7 +99,8 @@ module.exports = {
         group by instructors.id 
         order by instructors.name
         limit $1 offset $2`
-
+    
+        return res.render("Oie")
         console.log('CLIEEEEEEEEEENTTTTTEEEEEEEEEEEEEEEEEE')
         console.log(client)
         client.query(query, [limit, offset], function(err, results){
