@@ -10,11 +10,7 @@ const client = new Client({
     ssl: { rejectUnauthorized: false }
 });
 
-client.connect(function(err, client, done){
-    console.log('ATTENTION err=', err);
-    console.log('ATTENTION client=', client);
-    client.query(text, values).then(ret_cb).catch(err_cb);
-});
+client.connect();
 
 const server = express();
 server.use(express.urlencoded({ extended: true }));
