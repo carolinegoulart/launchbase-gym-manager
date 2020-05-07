@@ -11,7 +11,11 @@ const client = new Client({
   ssl: true,
 });
 
-client.connect();
+client.connect(function(err, client, done){
+    console.log('err=', err);
+    console.log('client=', client);
+    client.query(text, values).then(ret_cb).catch(err_cb);
+});
 
 // Application config:
 const server = express()
