@@ -14,9 +14,10 @@ client.connect(function(err, client, done){
     console.log('ATTENTION err=', err);
 });
 
+const server = express();
+
 module.exports = server
 
-const server = express();
 server.use(express.urlencoded({ extended: true }));
 
 server.use(express.static('public'));
