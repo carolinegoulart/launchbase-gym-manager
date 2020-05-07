@@ -12,10 +12,9 @@ const client = new Client({
 
 client.connect(function(err, client, done){
     console.log('ATTENTION err=', err);
-    console.log('ATTENTION client=', client);
 });
 
-console.log('CLIEEEEEEEEEEEEENNNTTTTTTTTT NO INSTRUCTOR', client)
+console.log('CLIEEEEEEEEEEEEENNNTTTTTTTTT NO SERVER', client)
 
 const server = express();
 server.use(express.urlencoded({ extended: true }));
