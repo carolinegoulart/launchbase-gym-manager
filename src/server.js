@@ -10,9 +10,11 @@ const client = new Client({
     ssl: true
 });
 
-client.connect(function(){
-    console.log(client)
-});
+client.connect();
+
+// client.connect(function(){
+//     console.log(client)
+// });
 
 module.exports = client;
 

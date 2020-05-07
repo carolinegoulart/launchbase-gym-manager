@@ -100,6 +100,7 @@ module.exports = {
         order by instructors.name
         limit $1 offset $2`
 
+        console.log(client)
         client.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             callback(results.rows)
