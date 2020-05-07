@@ -10,11 +10,9 @@ const client = new Client({
     ssl: { rejectUnauthorized: false }
 });
 
-const connection = client.connect();
+module.exports = client.connect();
 
 const server = express();
-
-module.exports = connection
 
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static('public'));
