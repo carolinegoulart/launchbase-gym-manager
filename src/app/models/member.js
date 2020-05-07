@@ -79,6 +79,7 @@ module.exports = {
         })
     },
     paginate(params){
+        console.log(server.nome)
         const { filter, limit, offset, callback } = params
 
         let query = ``,
