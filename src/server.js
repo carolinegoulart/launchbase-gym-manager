@@ -17,7 +17,7 @@ client.connect(function(err, client, done){
 
 const server = express();
 
-module.exports = server
+module.exports = client
 
 server.use(express.urlencoded({ extended: true }));
 

@@ -1,6 +1,5 @@
-const { age, date } = require('../../lib/utils')
-const server = require('../../server');
-const { client } = require('../../server');
+const { age, date } = require('../../lib/utils.js')
+const client = require('../../server.js');
 
 // const db = require('../../config/db')
 // substituted all db.query for client.query
@@ -80,8 +79,6 @@ module.exports = {
         })
     },
     paginate(params){
-        console.log("É PRO NOME APARECER AQUI")
-        console.log(server.nome)
         const { filter, limit, offset, callback } = params
 
         let query = ``,
