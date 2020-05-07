@@ -1,5 +1,6 @@
 const { age, date } = require('../../lib/utils')
 const server = require('../../server');
+const { client } = require('../../server');
 
 // const db = require('../../config/db')
 // substituted all db.query for client.query
@@ -79,6 +80,7 @@ module.exports = {
         })
     },
     paginate(params){
+        console.log("É PRO NOME APARECER AQUI")
         console.log(server.nome)
         const { filter, limit, offset, callback } = params
 
@@ -102,7 +104,7 @@ module.exports = {
         order by members.name
         limit $1 offset $2`
 
-        server.client.query(query, [limit, offset], function(err, results){
+        client.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             callback(results.rows)
         })
