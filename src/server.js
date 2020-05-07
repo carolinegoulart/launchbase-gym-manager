@@ -2,7 +2,6 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
 const methodOverride = require('method-override');
-const nome = "CAROOOOOOOOOOOOL"
 
 const { Client } = require('pg');
 
@@ -12,7 +11,7 @@ const client = new Client({
 });
 
 client.connect(function(err, client, done){
-    console.log('ATTENTION err=', err);
+    console.log('ATTENTION client=', client);
 });
 
 const server = express();

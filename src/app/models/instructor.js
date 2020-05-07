@@ -1,5 +1,5 @@
 const { age, date } = require('../../lib/utils')
-const { client } = require('../../server')
+const client = require('../../server.js');
 
 // const db = require('../../config/db')
 
@@ -100,7 +100,6 @@ module.exports = {
         order by instructors.name
         limit $1 offset $2`
 
-        console.log('CLIEEEEEEEEEEEEENNNTTTTTTTTT NO INSTRUCTOR', client)
         client.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             callback(results.rows)
