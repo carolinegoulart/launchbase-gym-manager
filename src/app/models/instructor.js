@@ -1,15 +1,8 @@
 // const db = require('../../config/db')
-
 const { age, date } = require('../../lib/utils')
-const { Client } = require('pg');
+const client = require('../../config/db')
 
-const client = new Client({  
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
-});
-
-client.connect();
-
+// substituted all db.query for client.query
 module.exports = {
     all(callback){
         const query = `

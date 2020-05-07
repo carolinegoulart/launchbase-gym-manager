@@ -1,9 +1,8 @@
-const { age, date } = require('../../lib/utils.js')
-const client = require('../../server.js');
-
 // const db = require('../../config/db')
-// substituted all db.query for client.query
+const { age, date } = require('../../lib/utils.js')
+const client = require('../../config/db')
 
+// substituted all db.query for client.query
 module.exports = {
     all(callback){
         client.query(`select * from members order by name asc`, function(err, results){
