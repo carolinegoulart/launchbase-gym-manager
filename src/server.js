@@ -10,16 +10,13 @@ const client = new Client({
     ssl: { rejectUnauthorized: false }
 });
 
-client.connect(function(err, client, done){
-    console.log('ATTENTION client=', client);
-});
+const connection = client.connect();
 
 const server = express();
 
-module.exports = client
+module.exports = connection
 
 server.use(express.urlencoded({ extended: true }));
-
 server.use(express.static('public'));
 server.use(methodOverride('_method')); 
 server.use(routes);
@@ -32,7 +29,6 @@ nunjucks.configure('src/app/views', {
 });
 
 server.listen(process.env.PORT || 5000);
-
 
 // Running locally:
 // const express = require('express')
