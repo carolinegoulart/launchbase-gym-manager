@@ -15,6 +15,8 @@ client.connect(function(err, client, done){
     console.log('ATTENTION client=', client);
 });
 
+console.log('CLIEEEEEEEEEEEEENNNTTTTTTTTT NO INSTRUCTOR', client)
+
 const server = express();
 server.use(express.urlencoded({ extended: true }));
 
