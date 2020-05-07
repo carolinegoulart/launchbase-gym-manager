@@ -101,7 +101,8 @@ module.exports = {
         limit $1 offset $2`
 
         client.query(query, [limit, offset], function(err, results){
-            console.log(query)
+            console.log('QUEEEEEEEEEEEEEEEEEEEEEEEEEERY', query)
+            return res.send("cheguei")
             if(err) throw `Database error! ${err}`
             callback(results.rows)
         })
