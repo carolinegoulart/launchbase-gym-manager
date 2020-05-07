@@ -1,5 +1,6 @@
 // const db = require('../../config/db')
 
+const { age, date } = require('../../lib/utils')
 const { Client } = require('pg');
 
 const client = new Client({  
@@ -8,8 +9,6 @@ const client = new Client({
 });
 
 client.connect();
-
-const { age, date } = require('../../lib/utils')
 
 module.exports = {
     all(callback){

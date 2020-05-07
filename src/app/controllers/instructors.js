@@ -27,9 +27,8 @@ module.exports = {
                 }
             }
         }
-        return res.send("Oie")
         Instructor.paginate(params)
-
+        
         // Quando tinha filtro, sem paginação:
         // const { filter } = req.query //dado que vem do filtro
         // if(filter){
