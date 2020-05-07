@@ -12,12 +12,6 @@ const client = new Client({
 
 client.connect();
 
-// client.connect(function(){
-//     console.log(client)
-// });
-
-module.exports = client;
-
 const server = express();
 
 server.use(express.urlencoded({ extended: true }));
@@ -31,6 +25,8 @@ nunjucks.configure('src/app/views', {
     autoescape: false,
     noCache: true
 });
+
+module.exports = client;
 
 server.listen(process.env.PORT || 5000);
 
