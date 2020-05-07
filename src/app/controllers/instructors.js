@@ -27,7 +27,7 @@ module.exports = {
                 }
             }
         }
-
+        return res.send("Oie")
         Instructor.paginate(params)
 
         // Quando tinha filtro, sem paginação:
