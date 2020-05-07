@@ -1,9 +1,10 @@
 const { age, date } = require('../../lib/utils')
-const db = require('../../config/db')
+// const db = require('../../config/db')
+// substituted all db.query for client.query
 
 module.exports = {
     all(callback){
-        db.query(`select * from members order by name asc`, function(err, results){
+        client.query(`select * from members order by name asc`, function(err, results){
             if(err) throw `Database error! ${err}`
             // results.rows ja eh um array
             callback(results.rows)
@@ -28,7 +29,7 @@ module.exports = {
             data.height,
             data.instructor
         ]
-        db.query(query, values, function(err, results){
+        client.query(query, values, function(err, results){
             if(err) throw `Database error! ${err}`
             // callback eh a function que definimos no member.js (nesse caso, no post)
             // post pois eh quando enviamos o dado pro banco..
@@ -36,7 +37,7 @@ module.exports = {
         })
     },
     find(id, callback){
-        db.query(`select members.*, instructors.name as instructor_name
+        client.query(`select members.*, instructors.name as instructor_name
         from members left join instructors
         on members.instructor_id = instructors.id
         where members.id = $1`, [id], function(err, results){
@@ -45,7 +46,7 @@ module.exports = {
         })
     },
     findBy(filter, callback){
-        db.query(`select * from members where name ilike '%${filter}%' order by name asc`, function(err, results){
+        client.query(`select * from members where name ilike '%${filter}%' order by name asc`, function(err, results){
             if(err) throw `Database error! ${err}`
             // results.rows ja eh um array
             callback(results.rows)
@@ -58,19 +59,19 @@ module.exports = {
             where id = $10`
         const values = [data.name, data.avatar_url, data.gender, data.email, date(data.birth).iso, data.blood, data.weight,
             data.height, data.instructor, data.id]
-        db.query(query, values, function(err, results){
+            client.query(query, values, function(err, results){
             if(err) throw `Database error! ${err}`
             callback()
         })
     },
     delete(id, callback){
-        db.query(`delete from members where id = $1`, [id], function(err, results){
+        client.query(`delete from members where id = $1`, [id], function(err, results){
             if(err) throw `Database error! ${err}`
             callback()
         })
     },
     instructorsSelectOptions(callback){
-        db.query(`select name, id from instructors`, function(err, results){
+        client.query(`select name, id from instructors`, function(err, results){
             if(err) throw `Database error! ${err}`
             callback(results.rows)
         })
@@ -98,7 +99,7 @@ module.exports = {
         order by members.name
         limit $1 offset $2`
 
-        db.query(query, [limit, offset], function(err, results){
+        client.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             callback(results.rows)
         })

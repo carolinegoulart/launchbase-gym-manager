@@ -3,6 +3,17 @@ const nunjucks = require('nunjucks')
 const routes = require('./routes')
 const methodOverride = require('method-override')
 
+// Heroku connection
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+// Application config:
 const server = express()
 server.use(express.urlencoded({ extended: true }))
 
