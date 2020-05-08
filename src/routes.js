@@ -25,3 +25,4 @@ routes.delete('/members', members.delete)
 
 // exportando o arquivo:
 module.exports = routes
+
