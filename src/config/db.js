@@ -11,12 +11,10 @@ if(process.env.NODE_ENV !== 'dev') {
     module.exports = client;
 
 } else {
-    
+
     require('dotenv').config();
     const { Pool } = require('pg');
-    
-    console.log(process.env.NODE_ENV);
-    
+        
     module.exports = new Pool({
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
