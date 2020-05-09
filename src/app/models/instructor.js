@@ -1,8 +1,6 @@
-// const db = require('../../config/db')
 const { age, date } = require('../../lib/utils')
 const client = require('../../config/db')
 
-// substituted all db.query for client.query
 module.exports = {
     all(callback){
         const query = `
@@ -106,4 +104,3 @@ module.exports = {
         })
     }
 }
-
